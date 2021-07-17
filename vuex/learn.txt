@@ -1,0 +1,39 @@
+
+computed(): 반복되는 코드를 줄여주는 장점.
+
+
+Vuex: 중앙 저장소 라이브러리
+
+store.js: vuex를 설치하면 자동으로 생성되는 .js 파일
+
+getters: vuex 인스턴스의 computed와 비슷한 역할.
+    - 차이점: computed는 this.~으로 값을 불러와 사용할 수 있음.
+            getters는 사용할 값을 선언하여 사용해야함.
+
+forEach(): 앞에 오는 array들을 반복하여 괄호 안의 함수를 실행함.
+
+Map Getters: 반복해서 getter를 사용하는 것을 대신해, getters에 선언되어 있는 값들을 간단하게.
+    $store.getters와 다르게 스크립트에 import 해줘야 함.
+    import { mapGetters} from 'vuex'
+    ...mapGetters(['allUsersCount','countOfSeoul','percentOfSeoul'])
+
+
+Mutation: state 값을 변화시키는 역할을 수행.
+- mutation 기능이 필요한 이유: 
+    state를 변화시키고 관리함.
+    기존 컴퍼넌트에서 state를 변화시키기 위해서는 각 컴퍼넌트에서 모두 변화시키는 함수를 선언하고 state로 보냄.
+    이렇게 일일이 보내는 것이 아니라, 컴포넌트에서 Mutation으로 'commit' 하고 
+    Mutation에서 state로 'Change'를 하자
+    - 방법 1. methods 에 mapMutation을 선언하고, store.js에서 선언해둔 mutation 값(addUsers)에 usersObj를 보냄.
+    - 방법 2. mapMutation을 사용하지 않고, this.$state.commit('store.js에서의 mutation 이름'.넘겨주는 값) = emit
+
+
+Action: Mutation은 동기로 진행이 되는데, 한번에 많이 들어오면 순서를 알기 어려움.
+    - state를 변화시키기 위한 로직
+    - 비동기 방식으로 dispatch를 통해 값을 불러오고 그 값들을 mutation으로 commit함.
+
+
+
+
+    component =====> Actions ======> Mutation =====> State
+            (dispatch)      (commit)    

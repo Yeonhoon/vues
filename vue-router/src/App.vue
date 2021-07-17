@@ -55,7 +55,6 @@
           </v-list-tile-content>
         </v-list-tile>
 
-
       </v-list>
     </v-navigation-drawer>
     <v-toolbar color="indigo" dark fixed app>
