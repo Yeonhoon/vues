@@ -1,0 +1,43 @@
+
+자식 컴포넌트 간의 통신: evntBus
+
+부모-자식 간 통신은
+    - 자식 컴포넌트에서 emit을 시행
+        methods{ 
+            this.$emit('Child',this.user)
+        }
+    - 부모 컴포넌트에서 자식 컴포넌트를 비추는 부분에서 받음
+        <template>
+            <@Child: "parent"></>
+        </template>
+        <script>
+            parent(user){ 
+                this.~ = user.~
+            }
+        </script>
+
+그러나 자식 간의 통신은 @Child~ 형식으로 받을 수 없음. 
+따라서 
+1. main.js에서 eventBus를 먼저 선언해줌
+    export const eventBus = new Vue()
+
+2. 통신하는 자식 컴포넌트에서 각각 eventBus를 import 
+    import {{evntBus}} from "../main"
+
+3. 데이터를 보내는 자식 컴포넌트의 methods 부분에서 $emit 실행
+    eventBus.$emit('DataName', [보내고자 하는 데이터])
+
+4. 데이터를 받는 자식 컴포넌트에서는 데이터를 받기 위해 대기하다 데이터를 받음
+    created(){
+        eventBus.$on('DataName', data =>{
+            this.edited = data
+        })
+    }
+
+5. main.js에 아예 처음부터 eventBus 인스턴스를 생성할 때, methods를 선언할수도 있음.
+
+        
+
+## Mixin
+컴포넌트에 동일하게 들어가는 것을 한 군데 모아둠. 
+컴포넌트별로 동일하게 사용하는 기능들을 모아둠으로써 관리를 용이하게.
