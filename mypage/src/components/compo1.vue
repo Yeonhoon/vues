@@ -5,7 +5,7 @@
       <p>주소: {{address}}</p>
       <p>번호: {{phone}}</p>
       <p>반려견: {{DogsKr}}</p>
-      <p>수정일자: {{editedDate}}</p>
+      <p>수정일자: {{getDateTime(editedDate)}}</p>
       <!-- <v-btn @click="changeName()">이름 변경2</v-btn> -->
   </div>
 
@@ -31,19 +31,10 @@ export default {
         changeName(){
             this.nameFromHome = "ㅎㅇㅎㅇ"
         },
-        // getDateTime(date){
-        //         if(date !== null){
-        //             let hour= date.getHours()
-        //             let minutes = date.getMinutes()
-        //             let fullDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
-        //             return `${fullDate}/${hour}/${minutes}`
-        //         }
-        //         else {
-        //             return null
-        //         }
-        // },
-        mixins: [dateFormat]
+
+        
     },
+    mixins: [dateFormat],
     created(){
         // 신호듣고 있기
         eventBus.$on('userWasEdited', (date) => {

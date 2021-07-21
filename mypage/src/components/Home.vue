@@ -4,8 +4,9 @@
         <v-p info >{{count}}</v-p>
         <v-btn info @click="count++">추가</v-btn>
         <div>
-            <p>이름{{names}}</p>
-            <p>시간{{getDateTime(createdAt)}}</p>
+            <p>이름: {{names}}</p>
+            <p>시간: {{ getDateTime(createdAt)}}</p>
+            <p>ㅎㅇ {{ helloMixin }}</p>
             <v-btn @click="changeName()">이름변경</v-btn>
             <Component1 
                 :names = "names"
@@ -41,8 +42,14 @@ export default {
             createdAt:null,
         }
     },
-    created(){
-        this.created = new Date();
+    created() {
+        this.createdAt = new Date();
+        console.log("mixinData: ", this.mixinData)
+    },
+    computed: {
+        helloMixin(){
+            return this.mixinData + "안녕!"
+        }
     },
     // 
     methods: {
@@ -56,18 +63,9 @@ export default {
             this.phone = user.phone
             this.dogs = user.dogs
         },
-        getDateTime(date){
-            if(date !== null){
-                let hour= date.getHours()
-                let minutes = date.getMinutes()
-                let fullDate = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`
-                return `${fullDate}/${hour}/${minutes}`
-            }
-            else {
-                return null
-            }
-        },
-        mixins: [dateFormat]
-    }
+       
+       
+    },
+    mixins: [dateFormat]
 }
 </script>
