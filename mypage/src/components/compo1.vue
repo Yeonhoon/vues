@@ -1,14 +1,13 @@
 <template>
-    <div>
-        <h1>{{title}}</h1>
-        <p>이름: {{names}}</p>
-        <p>주소: {{address}}</p>
-        <p>번호: {{phone}}</p>
-        <p>반려견: {{DogsKr}}</p>
-        <p>수정일자: {{editedDate}}</p>
-        
-        <!-- <v-btn @click="changeName()">이름 변경2</v-btn> -->
-    </div>
+  <div>
+      <h1>{{title}}</h1>
+      <p>이름: {{names}}</p>
+      <p>주소: {{address}}</p>
+      <p>번호: {{phone}}</p>
+      <p>반려견: {{DogsKr}}</p>
+      <p>수정일자: {{editedDate}}</p>
+      <!-- <v-btn @click="changeName()">이름 변경2</v-btn> -->
+  </div>
 
 </template>
 <script>
