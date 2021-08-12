@@ -5,14 +5,16 @@
       v-for="(list, key) in todoList"
       :key="key"
     >
+      <p>Todo #{{key+1}}</p>
       <p>{{list.Todo}}</p>
       <p>{{list.status}}</p>
       <v-btn fab text small color="green"
-      v-if="list.status ==='created'">
+      v-if="list.status === 'created'"
+      @click="complete()">
         <v-icon color="green">mdi-check</v-icon>
       </v-btn>
       <v-btn fab text small color="red"
-      v-if="list.status==='created'"
+      v-if="list.status === 'created'"
       @click="deleteTodo(key)">
         <v-icon color="red">mdi-delete</v-icon>
       </v-btn>
@@ -57,6 +59,9 @@ export default {
       console.log("삭제한다.")
       console.log(key,"를 삭제한다")
       this.$emit("deleteTodo", key)
+    },
+    complete(){
+      console.log('할일 완료')
     }
   }
 }

@@ -19,7 +19,7 @@
         </v-row>
         <v-flex>
             <div class="text-center">
-                <v-btn class="ma-3 success" @click="addTodo()">할일 추가</v-btn>
+                <v-btn class="ma-3 primary" @click="addTodo()">할일 추가</v-btn>
                 <v-btn class="warning"
                 v-if="this.status ==='editing'"
                 @click="edit()">할일 수정</v-btn>

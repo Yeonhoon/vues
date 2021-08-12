@@ -1,5 +1,7 @@
 <template>
   <v-app>
+
+
     <v-app-bar
       app
       color="primary"
@@ -24,7 +26,24 @@
           width="100"
         />
       </div>
-
+      <v-btn
+        @click="$router.push({name:'Home'})"
+        text
+      >
+      Home
+      </v-btn>
+      <router-link router :to="{name:'About'}" exact
+        >
+        <h2>About</h2>
+      </router-link>
+        
+      
+      <v-btn
+        href="/todo"
+        text="Todo"
+      >
+      Todo
+      </v-btn>
       <v-spacer></v-spacer>
 
       <v-btn
@@ -38,6 +57,42 @@
     </v-app-bar>
 
     <v-main>
+      <div class="text-center">
+        <h1>router 연습</h1>
+        <router-link
+          router :to="{name:'Home'}">
+          <h2>Home</h2>
+        </router-link>
+        <router-link 
+          router :to="{name:'About'}">
+          <h2>About</h2>
+        </router-link>
+        <router-link
+          router :to="{name:'Todo'}">
+          <h2>Todo List</h2>  
+        </router-link>
+        <router-link
+          router :to="{
+            name:'Workout',
+            }"
+        > 
+        <h2>Workout</h2>
+        </router-link>
+        <router-link
+          router :to="{
+            name:'Temp',
+          }"
+        >
+        <h2>Temp</h2>
+        </router-link>
+        <router-link
+          router :to="{
+            name: 'Users'
+          }">
+          <h2>Users</h2>
+        </router-link>
+      </div>
+      
       <router-view/>
     </v-main>
   </v-app>
